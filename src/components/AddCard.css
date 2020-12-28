@@ -1,0 +1,42 @@
+.add__card {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+    min-height: 350px;
+    max-width: 350px;
+    min-width: 100px;
+    z-index: 1;
+}
+
+.add__card > img {
+    height: 100%;
+    width: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    margin-left: 10px;
+
+}
+
+.add__seeMore {
+    flex: 1;
+    text-decoration: none;
+    color: rgb(41, 150, 184);
+}
+
+.add__img {
+    padding-left:20px;
+    padding-bottom: 10px;
+    width: 150px;
+}
+
+.add__title {
+    flex: 1;
+    font-size: 19px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
