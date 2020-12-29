@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import DeliveryDetails from './pages/DeliveryDetails';
 import Checkout from './pages/Checkout';
+import TotalOrders from './pages/TotalOrders';
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 function App() {
@@ -10,7 +11,7 @@ function App() {
     <div className="App">
     <Sidebar/>
       <Navbar/>
-      <Checkout/>
+      <TotalOrders/>
     </div>
   );
 }
