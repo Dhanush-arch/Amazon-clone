@@ -1,6 +1,7 @@
 import './App.css';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
+import CheckOut from './pages/CheckOut';
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 function App() {
@@ -8,7 +9,7 @@ function App() {
     <div className="App">
     <Sidebar/>
       <Navbar/>
-      <Cart/>
+      <CheckOut/>
     </div>
   );
 }
