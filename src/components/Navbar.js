@@ -2,22 +2,25 @@ import React from 'react';
 import './Navbar.css';
 import { GoSearch } from "react-icons/go";
 import {CgShoppingCart} from 'react-icons/cg';
+import {FaBars} from 'react-icons/fa';
 
 function Navbar () {
     return (
         <div className="navbar">
-            <button className="openbtn" onClick={()=> {
+            <a className="openbtn" onClick={()=>{
                 document.getElementById("mySidepanel").style.width = "380px";
-            }}>☰</button>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="logo"/>
+              }}>
+              <FaBars  />
+            </a>
+            <img src="https://zeevector.com/wp-content/uploads/LOGO/Amazon-India-Logo-PNG-White2.png" alt="logo"/>
             <div className="search__bar">
-                <input type="text" placeholder="search" id=""/>
+                <input type="text" id=""/>
                 <div className="search__icon">
                 <GoSearch className="gosearch__icon"/>
                 </div>
             </div>
             <div className="navbar__right">
-               <div className="navbar__right__in"> 
+               <div className="navbar__right__in">
                    <div className="navbar__signin">
                         <p>Hello Guest</p>
                         <a href="#">Sign In</a>
@@ -29,7 +32,7 @@ function Navbar () {
                     </div>
                 </div>
             </div>
-           
+
         </div>
     )
 }

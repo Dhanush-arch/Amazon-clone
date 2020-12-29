@@ -5,7 +5,7 @@ import './MainCarousel.css';
 
 function MainCarousel() {
     return (
-        <Carousel className="carousel__main" showThumbs={false} showStatus={false} showIndicators={false} showArrows={false} autoPlay={true}
+        <Carousel className="carousel__main" infiniteLoop={true} showThumbs={false} showStatus={false} showIndicators={false} showArrows={false} autoPlay={true}
         >
         <div>
             <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/HeroNov/Dec_Desktop_Seasonal_1x._CB414543468_.jpg" />
