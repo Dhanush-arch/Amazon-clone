@@ -1,0 +1,27 @@
+.subtotal__card {
+  background-color: white;
+  padding: 30px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub__totalPrice {
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  padding-bottom: 15px;
+  flex-direction: row;
+}
+
+.subtotal__btn {
+  background-color: #F2C965;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+  outline: none;
+}
+
+.subtotal__btn:hover {
+  cursor: pointer;
+}
