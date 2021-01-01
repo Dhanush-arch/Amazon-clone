@@ -119,14 +119,25 @@ export const decreaseFromCart = (user_id, products_id, cart_id) => {
     return axios
       .put(
         base_url + `/decrease-from-cart/${products_id}/${cart_id}/${user_id}/`,
-        
+
          { headers: {
             Authorization: `token ${_token}`,
           },}
-        
+
       )
       .then((e) => {
         return e;
       });
   }
+};
+
+export const getUserId = () => {
+    if (_token) {
+        return axios.post(base_url + `/getuserid/`, { headers: {
+           Authorization: `token ${_token}`,
+         }
+     }).then((e) => {
+         return e.user;
+     });
+    }
 };
