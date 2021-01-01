@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import AddCard from '../components/AddCard'
 import MainCarousel from '../components/MainCarousel'
 import Navbar from '../components/Navbar'
@@ -6,10 +6,19 @@ import ProductCard from '../components/ProductCard'
 import Sidebar from '../components/Sidebar'
 import Footer from '../components/Footer'
 import './Home.css'
+import {useSelector, useDispatch} from 'react-redux'
+import getProducts from '../actions/getProducts';
+
 function Home() {
+    const getProduct = useDispatch();
+    const product = useSelector(state => state.products)
+
+    useEffect(() => {
+        getProduct(getProducts())
+    },[])
+
     return (
         <div className="home">
-        	
             <MainCarousel/>
             <div className="home__row">
                 <AddCard title={"Upgrade your home"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/B00OT9CS5S_186x116._SY116_CB417134289_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/B08345R1ZW_186x116._SY116_CB417134289_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/WFH_186x116._SY116_CB417134289_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/B01N5KIHWN_186x116._SY116_CB417134288_.jpg"]}/>

@@ -1,9 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Cart.css'
 import EmptyCard from '../components/EmptyCard'
 import CartProductCard from '../components/CartProductCard'
 import SubtotalCard from '../components/SubtotalCard'
+import {useSelector, useDispatch} from 'react-redux'
+import getCart from '../actions/getCart';
 function Cart() {
+    const get_cart = useDispatch();
+    const cart = useSelector(state => state.cart)
+
+    useEffect(() => {
+        get_cart(getCart(1));
+    },[])
+
     return (
         <div className="cart__page">
           <div className="cart__left">

@@ -12,7 +12,9 @@ export const login = (user_name, password) => {
       password: password,
     })
     .then((e) => {
+        console.log(_token)
       _token = e.data.key;
+      console.log(_token)
       return e.data.key;
     });
 };
@@ -133,11 +135,13 @@ export const decreaseFromCart = (user_id, products_id, cart_id) => {
 
 export const getUserId = () => {
     if (_token) {
-        return axios.post(base_url + `/getuserid/`, { headers: {
+        return axios.post(base_url + `/getuserid/`, {
+        headers: {
+            'Content-Type': 'application/json',
            Authorization: `token ${_token}`,
          }
      }).then((e) => {
-         return e.user;
+         return e.data[0].user;
      });
     }
 };
