@@ -145,3 +145,17 @@ export const getUserId = () => {
      });
     }
 };
+
+export const getCartProducts = (products) => {
+    if(_token) {
+        return axios.get(base_url + `/get-cart-products/?products=${products}`, {
+        headers: {
+            'Content-Type': 'application/json',
+           Authorization: `token ${_token}`,
+         }
+     }).then((e) => {
+         console.log(e.data)
+            return e.data;
+        })
+    }
+}
