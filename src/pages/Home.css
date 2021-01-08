@@ -1,5 +1,7 @@
 .home{
     background-color: #EAEDED;
+    position: relative;
+    min-height: 100vh;
 }
 
 .home__row {
@@ -7,4 +9,44 @@
     z-index: 1;
     margin-left:5px;
     margin-right: 5px;
+}
+
+.search__badge {
+    display: flex;
+    z-index: 1;
+    margin-left:10px;
+    border-radius: 50px;
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-width: 100px;
+    padding-right: 15px;
+}
+
+.no__product__banner {
+    display: flex;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+}
+.home__row__cst{
+    display: flex;
+    z-index: 1;
+    margin-left:5px;
+    margin-right: 5px;
+    justify-content: center;
+    /* padding-top: 50px;
+    padding-bottom: 50px; */
+}
+
+.no__product__footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    z-index:0;
+}
+
+.close__btn{
+    cursor: pointer;
 }

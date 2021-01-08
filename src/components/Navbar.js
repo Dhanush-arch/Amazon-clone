@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Navbar.css';
 import { GoSearch } from "react-icons/go";
 import {CgShoppingCart} from 'react-icons/cg';
@@ -6,11 +6,15 @@ import {FaBars} from 'react-icons/fa';
 import {useSelector, useDispatch} from 'react-redux'
 import {Link, useHistory} from 'react-router-dom';
 import getCart from '../actions/getCart';
+import {getSearchProducts, toggleOffSearch, setWord} from '../actions/getSearchProducts';
 
 function Navbar () {
+
     const getCartDetail = useDispatch();
+    const get_search_products = useDispatch();
     const userCred = useSelector(state => state.user)
     const cart = useSelector(state => state.cart)
+    const searchProb = useSelector(state => state.search)
     const history = useHistory();
 
     useEffect(() => {
@@ -35,6 +39,13 @@ function Navbar () {
       }
     }
 
+    const seachHandler = () => {
+        get_search_products(getSearchProducts(searchProb.word)).then(()=>{
+            console.log("searched")
+        })
+    }
+
+
     return (
         <div className="navbar">
             <a className="openbtn" onClick={()=>{
@@ -43,11 +54,16 @@ function Navbar () {
               <FaBars  />
             </a>
             <img onClick={()=> {
-                    history.push('/')
+                    if(searchProb.onSearch){
+                        get_search_products(toggleOffSearch())
+                    }
+                    else {
+                        history.push('/')
+                    }
                 }} src="https://zeevector.com/wp-content/uploads/LOGO/Amazon-India-Logo-PNG-White2.png" alt="logo"/>
             <div className="search__bar">
-                <input type="text" id=""/>
-                <div className="search__icon">
+                <input type="text" value={searchProb.word} onChange={e => get_search_products(setWord(e.target.value))} id=""/>
+                <div className="search__icon" onClick={seachHandler}>
                 <GoSearch className="gosearch__icon"/>
                 </div>
             </div>
