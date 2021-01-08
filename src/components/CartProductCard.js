@@ -1,16 +1,16 @@
 import React from 'react'
 import './CartProductCard.css'
+import {websiteBaseUrl} from '../constants';
 
-function CartProductCard() {
+function CartProductCard({title, image, quantity, price}) {
     return (
         <div className="cart__productcard">
-        <img src="https://m.media-amazon.com/images/I/71r4k5EHeZL._AC_AA180_.jpg" alt="" />
+        <img src={`${websiteBaseUrl}${image}`} alt="image" />
         <div className="cart__productcard__center">
-        <p className="cart__productcard__title">Prouct Description</p>
-        <p>Quantity</p>
+        <p className="cart__productcard__title">{title}</p>
         </div>
         <div className="cart__productcard__right">
-        <p>Price</p>
+        <p>{quantity} x {price} = {quantity * parseFloat(price)}</p>
         </div>
         </div>
     )

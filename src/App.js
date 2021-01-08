@@ -20,18 +20,18 @@ function App() {
      <Router>
         <div className="App">
             <Switch>
+                <Route path='/login' exact component={Login}/>
+                <Route path='/register' exact component={Register}/>
                 <Route path='/' exact>
                     <Navbar/>
                     <Sidebar/>
                     <Home/>
                 </Route>
-                <Route path='/login' exact component={Login}/>
-                <Route path='/register' exact component={Register}/>
-                <Router path='/cart'>
+                <Route path='/cart' exact>
                     <Navbar/>
                     <Sidebar/>
                     <Cart/>
-                </Router>
+                </Route>
                 <Route path="/delivery" exact>
                     <Navbar/>
                     <Sidebar/>

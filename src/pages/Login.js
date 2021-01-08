@@ -2,16 +2,20 @@ import React, {useState} from 'react'
 import './Login.css'
 import {useSelector, useDispatch} from 'react-redux'
 import {login, getId} from '../actions/getUserCred';
+import {useHistory} from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const get_cred = useDispatch();
+    const history = useHistory();
 
     const handleSubmit = (e) => {
       e.preventDefault();
       get_cred(login(email, password)).then(()=> {
-          get_cred(getId());
+          get_cred(getId()).then(()=> {
+              history.push('/')
+          })
       })
        // setTimeout(()=>{
        //     get_cred(getId());

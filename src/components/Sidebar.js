@@ -1,11 +1,14 @@
 import React from 'react';
 import './Sidebar.css';
+import {useSelector, useDispatch} from 'react-redux'
 
 function Sidebar () {
+	const userCred = useSelector(state => state.user)
+
 	return (
 		<div id="mySidepanel" className="sidepanel">
 			<div className="sidebar__header">
-			<p>Hello Guest</p>
+			<p>Hello {userCred.isLoggedIn ? <a>{userCred.userEmail}</a> : <>Sign In</>}</p>
 			<a href="javascript:void(0)" className="closebtn" onClick={()=> {
 			document.getElementById("mySidepanel").style.width = "0";
 		  }}>×</a>
@@ -31,7 +34,7 @@ function Sidebar () {
 			  <a className="sidebar__content">Sign In</a>
 		  	<br/>
 		  	<br/>
-			 
+
 		</div>
 	)
 }

@@ -21,7 +21,7 @@ export const getId = () => {
             console.log(e)
             dispatch({
                 type : "SET_ID" ,
-                payload : parseInt(e) - 1
+                payload : parseInt(e)
             })
         })
     }

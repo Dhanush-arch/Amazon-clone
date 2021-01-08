@@ -11,15 +11,33 @@ import getProducts from '../actions/getProducts';
 
 function Home() {
     const getProduct = useDispatch();
-    const product = useSelector(state => state.products)
+    const product = useSelector(state => state.products);
+    let productArr = [];
+    let productArrFinal = [];
 
     useEffect(() => {
         getProduct(getProducts())
     },[])
 
+    // product.map(pro => {
+    //     productArr.push(<ProductCard title={pro.productName} desc={pro.productDescription} price={pro.productPrice} image={pro.productImage}/>)
+    // })
+    for(let i=0;i<product.length;i++) {
+        productArr.push(<ProductCard id={product[i].productID} title={product[i].productName} desc={product[i].productDescription} price={product[i].productPrice} image={product[i].productImage}/>)
+    }
+
+    for(let i=0;i<productArr.length;i=i+4) {
+        let temp = [];
+        for(let j=i;j<i+4;j++){
+            temp.push(productArr[j])
+        }
+        productArrFinal.push(<div className="home__row">{temp}</div>)
+    }
+
     return (
         <div className="home">
             <MainCarousel/>
+            {productArrFinal}
             <div className="home__row">
                 <AddCard title={"Upgrade your home"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/B00OT9CS5S_186x116._SY116_CB417134289_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/B08345R1ZW_186x116._SY116_CB417134289_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/WFH_186x116._SY116_CB417134289_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/B01N5KIHWN_186x116._SY116_CB417134288_.jpg"]}/>
                 <AddCard title={"Everyday essentials"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_4._SY116_CB431329535_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_1._SY116_CB431329533_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_2._SY116_CB431329535_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_3._SY116_CB431329535_.jpg"]}/>

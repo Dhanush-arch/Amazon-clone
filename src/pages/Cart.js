@@ -5,13 +5,31 @@ import CartProductCard from '../components/CartProductCard'
 import SubtotalCard from '../components/SubtotalCard'
 import {useSelector, useDispatch} from 'react-redux'
 import getCart from '../actions/getCart';
+import getCartProducts from '../actions/getCartProducts';
+
 function Cart() {
     const get_cart = useDispatch();
+    const userCred = useSelector(state => state.user)
     const cart = useSelector(state => state.cart)
+    const cart_products = useSelector(state => state.cart_products.products)
 
     useEffect(() => {
-        get_cart(getCart(1));
+        if (userCred.isLoggedIn){
+            get_cart(getCart(userCred.userID)).then(() => {
+                let products = cart.products
+                products.join(',')
+                get_cart(getCartProducts(products)).then(()=>{
+                    console.log("gotted");
+                })
+            })
+        }
+
     },[])
+
+    let product_cards = []
+    cart_products.map(product => {
+        product_cards.push(<><CartProductCard title={product.productName} image={product.productImage} quantity={product.quantity} price={product.productPrice}/><hr/></>)
+    })
 
     return (
         <div className="cart__page">
@@ -23,27 +41,22 @@ function Cart() {
                 <p className="cart__title">Shopping Cart</p>
                 <p className="cart__subprice">Price</p>
               </div>
-              <hr />
-              <CartProductCard/>
-              <hr/>
-                <CartProductCard/>
+              {userCred.isLoggedIn ? <>
                   <hr/>
-                  <CartProductCard/>
-                    <hr/>
-                    <CartProductCard/>
-                      <hr/>
-              <CartProductCard/>
-                <hr/>
-              <div className="cart__totalPrice">
-                <p className="cart__subTotal">Subtotal (2 items): </p><p className="cart__subPrice">98,989.00</p>
-              </div>
+                  {product_cards}
+                  <div className="cart__totalPrice">
+                    <p className="cart__subTotal">Subtotal ({cart.products.length} items): </p><p className="cart__subPrice"> Rs.{cart.price}</p>
+                  </div>
+            </> : <EmptyCard/>}
+
+
             </div>
           </div>
           <div className="cart__right">
             <br></br>
             <br></br>
             <div className="cart__row">
-              <SubtotalCard/>
+                {userCred.isLoggedIn ? <SubtotalCard/> : ''}
             </div>
           </div>
         </div>
