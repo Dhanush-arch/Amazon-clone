@@ -30,6 +30,7 @@ export const logout = () => {
     })
     .then((e) => {
       console.log(e.status);
+      return e;
     });
 };
 

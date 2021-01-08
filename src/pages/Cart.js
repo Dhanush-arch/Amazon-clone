@@ -18,9 +18,11 @@ function Cart() {
             get_cart(getCart(userCred.userID)).then(() => {
                 let products = cart.products
                 products.join(',')
-                get_cart(getCartProducts(products)).then(()=>{
-                    console.log("gotted");
-                })
+                if(products.length > 0){
+                    get_cart(getCartProducts(products)).then(()=>{
+                        console.log("gotted");
+                    })
+                }
             })
         }
 
@@ -39,9 +41,9 @@ function Cart() {
             <div className="cart__col">
               <div className="cart__row__1">
                 <p className="cart__title">Shopping Cart</p>
-                <p className="cart__subprice">Price</p>
+                {userCred.isLoggedIn && (product_cards.length > 0) ? <p className="cart__subprice">Price</p> : ''}
               </div>
-              {userCred.isLoggedIn ? <>
+              {userCred.isLoggedIn && (product_cards.length > 0) ? <>
                   <hr/>
                   {product_cards}
                   <div className="cart__totalPrice">
@@ -56,7 +58,7 @@ function Cart() {
             <br></br>
             <br></br>
             <div className="cart__row">
-                {userCred.isLoggedIn ? <SubtotalCard/> : ''}
+                {userCred.isLoggedIn && (product_cards.length > 0) ? <SubtotalCard/> : ''}
             </div>
           </div>
         </div>

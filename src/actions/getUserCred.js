@@ -1,4 +1,4 @@
-import { login as LOGIN, getUserId } from "../apiWrapper";
+import { login as LOGIN, getUserId, logout as LOGOUT } from "../apiWrapper";
 
 export const login = (username, password) => {
     return (dispatch) => {
@@ -22,6 +22,16 @@ export const getId = () => {
             dispatch({
                 type : "SET_ID" ,
                 payload : parseInt(e)
+            })
+        })
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        return LOGOUT().then((e) => {
+            dispatch({
+                type: "LOGOUT"
             })
         })
     }

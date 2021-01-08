@@ -7,11 +7,13 @@ import {useSelector, useDispatch} from 'react-redux'
 import {Link, useHistory} from 'react-router-dom';
 import getCart from '../actions/getCart';
 import {getSearchProducts, toggleOffSearch, setWord} from '../actions/getSearchProducts';
+import {logout} from '../actions/getUserCred';
 
 function Navbar () {
 
     const getCartDetail = useDispatch();
     const get_search_products = useDispatch();
+    const LOGOUT = useDispatch();
     const userCred = useSelector(state => state.user)
     const cart = useSelector(state => state.cart)
     const searchProb = useSelector(state => state.search)
@@ -78,7 +80,9 @@ function Navbar () {
                             <p className="navbar__login" id="dropbtn" onClick={myFunction}>My Account</p>
                             <div id="myDropdown" className="dropdown-content">
                                 <Link className="dropdown__link" to='/total-orders'>Orders</Link>
-                                <Link className="dropdown__link" to=''>Logout</Link>
+                                <Link className="dropdown__link" to='' onClick={() => {
+                                        LOGOUT(logout())
+                                    }}>Logout</Link>
                              </div>
                         </div>
                     : <Link className="navbar__login" to='/login'>Login</Link> }

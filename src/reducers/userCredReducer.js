@@ -18,6 +18,13 @@ const userCredReducer = (state=initial_state, action) => {
                 isLoggedIn : action.payload.isLoggedIn,
                 userToken : action.payload.token
             }
+        case "LOGOUT":
+            return {
+                userID : null,
+                userToken: null,
+                userEmail: null,
+                isLoggedIn: false,
+            }
         default:
             return state
     }
