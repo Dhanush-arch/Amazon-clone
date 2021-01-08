@@ -200,3 +200,9 @@ export const getOrderedProducts = (user_id) => {
         })
     }
 }
+
+export const getSearchProducts = (search_word) => {
+  return axios.get(base_url + `/products/0/?search=${search_word}`).then((e) => {
+    return e.data;
+  });
+};
