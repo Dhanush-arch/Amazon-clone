@@ -159,3 +159,44 @@ export const getCartProducts = (products) => {
         })
     }
 }
+
+export const getPaymentDetail = (amnt) => {
+    if(_token) {
+        return axios.post(base_url + `/payment/`,
+        { amount:amnt },
+        { headers: {
+                'Content-Type': 'application/json',
+               Authorization: `token ${_token}`,
+            }}).then((e) => {
+            console.log(e)
+            return e;
+        })
+    }
+}
+
+export const checkPaymentStatus = (cart_id, razorpay_payment_id, razorpay_order_id, razorpay_signature) => {
+    if(_token) {
+        return axios.post(base_url + `/check-payment/`,
+        { cartID: cart_id,razorpay_payment_id:razorpay_payment_id, razorpay_order_id:razorpay_order_id, razorpay_signature:razorpay_signature},
+        { headers: {
+                'Content-Type': 'application/json',
+               Authorization: `token ${_token}`,
+            }}).then((e) => {
+            console.log(e)
+            return e;
+        })
+    }
+}
+
+export const getOrderedProducts = (user_id) => {
+    if(_token) {
+        return axios.get(base_url + `/get-ordered-products/${user_id}/`,
+        { headers: {
+                'Content-Type': 'application/json',
+               Authorization: `token ${_token}`,
+            }}).then((e) => {
+            console.log(e.data)
+            return e.data;
+        })
+    }
+}
