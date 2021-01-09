@@ -70,6 +70,10 @@ function Checkout() {
                 }
             })
         },
+        "prefill": {
+            "email": `${userCred.userEmail}`,
+            "contact": `${delivery.num}`
+        },
         "notes": {
             "address": "Razorpay Corporate Office"
         },
@@ -79,6 +83,9 @@ function Checkout() {
     };
         const rzp1 = new window.Razorpay(options);
         rzp1.open();
+        rzp1.on('payment.failed', function (response){
+            alert("Payment Failed. Retry");
+        })
     };
 
     return (
