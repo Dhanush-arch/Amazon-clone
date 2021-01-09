@@ -4,11 +4,13 @@ import CartProductCard from '../components/CartProductCard'
 import {useSelector, useDispatch} from 'react-redux'
 import getCart from '../actions/getCart';
 import getCartProducts from '../actions/getCartProducts';
-import { getPaymentDetail, checkPaymentStatus } from "../apiWrapper";
+import { getPaymentDetail, checkPaymentStatus, setCOD } from "../apiWrapper";
 import {useHistory} from 'react-router-dom';
 
 function Checkout() {
     const [res, setRes] = useState("");
+    const [isOnline, setIsOnline] = useState(false);
+    const [isSelected, setIsSelected] = useState(false);
     const delivery = useSelector(state => state.delivery_details);
     const get_cart = useDispatch();
     const userCred = useSelector(state => state.user)
@@ -42,6 +44,21 @@ function Checkout() {
         product_cards.push(<><CartProductCard title={product.productName} image={product.productImage} quantity={product.quantity} price={product.productPrice}/><hr/></>)
     })
 
+
+    const codHandler = () => {
+        setCOD(cart.cartId).then((e) => {
+            console.log(e)
+            if (userCred.isLoggedIn){
+                get_cart(getCart(userCred.userID)).then(() => {
+                    let products = cart.products
+                    products.join(',')
+                    get_cart(getCartProducts(products)).then(()=>{
+                        history.push('/total-orders')
+                    })
+                })
+            }
+        })
+    }
 
     const paymentHandler = async (e) => {
         e.preventDefault();
@@ -115,12 +132,18 @@ function Checkout() {
             <div className="inner__row">
               <p>Subprice: Rs.{cart.price}</p>
               <p>Payment Method:</p>
-              <input className="input__radio" type="radio" id="cod" name="payment" value="1"/>
+              <input onClick={() => {
+                      setIsOnline(false);
+                      setIsSelected(true);
+                  }} className="input__radio" type="radio" id="cod" name="payment" value="1"/>
               <label for="cod">Cash on Delivery</label><br/>
-              <input className="input__radio" type="radio" id="online" name="payment" value="2"/>
+              <input onClick={() => {
+                      setIsOnline(true);
+                      setIsSelected(true);
+                  }} className="input__radio" type="radio" id="online" name="payment" value="2"/>
               <label for="online">Online</label><br/>
-              <input className="input__submit" type="submit" value="CheckOut"/>
-              <button onClick={paymentHandler}>Pay Now</button>
+              {isOnline ? (isSelected ?  <button className="input__submit" onClick={paymentHandler}>CheckOut</button> : <button className="input__submit" disabled>CheckOut</button>)
+                      : (isSelected ? <input className="input__submit" type="submit" onClick={codHandler} value="CheckOut"/> : <input className="input__submit" disabled type="submit" value="CheckOut"/>)}
             </div>
           </div>
         </div>

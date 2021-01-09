@@ -207,3 +207,17 @@ export const getSearchProducts = (search_word) => {
     return e.data;
   });
 };
+
+export const setCOD = (cart_id) => {
+    if(_token) {
+        return axios.post(base_url + `/set-cod/`,
+        {cartID: cart_id}    ,
+        { headers: {
+                'Content-Type': 'application/json',
+               Authorization: `token ${_token}`,
+            }}).then((e) => {
+            console.log(e)
+            return e;
+        })
+    }
+}
