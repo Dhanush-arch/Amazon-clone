@@ -8,12 +8,14 @@ import {Link, useHistory} from 'react-router-dom';
 import getCart from '../actions/getCart';
 import {getSearchProducts, toggleOffSearch, setWord} from '../actions/getSearchProducts';
 import {logout} from '../actions/getUserCred';
+import eraseCart from '../actions/eraseCart';
 
 function Navbar () {
 
     const getCartDetail = useDispatch();
     const get_search_products = useDispatch();
     const LOGOUT = useDispatch();
+    const EraseCart = useDispatch();
     const userCred = useSelector(state => state.user)
     const cart = useSelector(state => state.cart)
     const searchProb = useSelector(state => state.search)
@@ -73,19 +75,21 @@ function Navbar () {
                <div className="navbar__right__in">
                    <div className="navbar__signin">
                         <p>Hello {userCred.isLoggedIn ? '' : <>Guest</>}</p>
-                        {userCred.isLoggedIn ? <a>{userCred.userEmail}</a> : <a href="#">Sign In</a>}
+                        {userCred.isLoggedIn ? <a>{userCred.userEmail}</a> : <Link className="navbar__login" to='/login'>Sign In</Link>}
                     </div>
                     {userCred.isLoggedIn ?
                         <div className="dropdown">
                             <p className="navbar__login" id="dropbtn" onClick={myFunction}>My Account</p>
                             <div id="myDropdown" className="dropdown-content">
                                 <Link className="dropdown__link" to='/total-orders'>Orders</Link>
-                                <Link className="dropdown__link" to='' onClick={() => {
-                                        LOGOUT(logout())
+                                <Link className="dropdown__link" onClick={() => {
+                                        LOGOUT(logout()).then(()=>{
+                                            EraseCart(eraseCart())
+                                        })
                                     }}>Logout</Link>
                              </div>
                         </div>
-                    : <Link className="navbar__login" to='/login'>Login</Link> }
+                    : <Link className="navbar__login" to='/register'>Sign Up</Link> }
                     <div className="navbar__cart">
                         <span className="cart__items">{cart.products ? cart.products.length : 0}</span>
                         {userCred.isLoggedIn ? <Link style={{cursor:"pointer"}} to='/cart'><CgShoppingCart className="cart__icon"/></Link> : <CgShoppingCart style={{cursor:"pointer"}} onClick={()=>{

@@ -19,37 +19,44 @@ function TotalOrders() {
     },[])
 
     let list = []
-    orderedProducts.map((product) => {
+    if(orderedProducts.length > 0) {
+        orderedProducts.map((product) => {
 
-        let temp_list =[]
-        product.products.map((pro) => {
-            temp_list.push(
-                    <div className="total__productcard">
-                    <div className="total__image"><img src={`${websiteBaseUrl}${pro.productImage}`} alt="image" /></div>
-                    <div className="total__productcard__center">
-                    <p className="total__productcard__title">{pro.productName}</p>
-                    </div>
-                    <div className="total__productcard__right">
-                    <p>{pro.quantity} x {pro.productPrice} = {pro.quantity * parseFloat(pro.productPrice)}</p>
-                    </div>
-                    </div>
-            )
+            let temp_list =[]
+            product.products.map((pro) => {
+                temp_list.push(
+                        <div className="total__productcard">
+                        <div className="total__image"><img src={`${websiteBaseUrl}${pro.productImage}`} alt="image" /></div>
+                        <div className="total__productcard__center">
+                        <p className="total__productcard__title">{pro.productName}</p>
+                        </div>
+                        <div className="total__productcard__right">
+                        <p>{pro.quantity} x {pro.productPrice} = {pro.quantity * parseFloat(pro.productPrice)}</p>
+                        </div>
+                        </div>
+                )
+            })
+
+
+
+
+            list.push(<>
+                <div  className="total__card">
+                    <p className="total__card__id">Order ID: {product.cartId}<p className="total__card__content">Price</p></p>
+                    {temp_list}
+                    <hr/>
+                    <p className="total__card__content">Payment Mode: {product.paymentMethod}</p>
+                    <p className="total__card__content">Price: {product.price}</p>
+
+                </div>
+                </>)
         })
-
-
-
-
-        list.push(<>
-            <div  className="total__card">
-                <p className="total__card__id">Order ID: {product.cartId}<p className="total__card__content">Price</p></p>
-                {temp_list}
-                <hr/>
-                <p className="total__card__content">Payment Mode: {product.paymentMethod}</p>
-                <p className="total__card__content">Price: {product.price}</p>
-
-            </div>
-            </>)
-    })
+    } else {
+        list.push(
+        <div className="no__orders__card">
+              <p className="no__orders__card__title">You have not Ordered Any Products.</p>
+        </div>)
+    }
 
     return (
         <div className="totalorders__page">

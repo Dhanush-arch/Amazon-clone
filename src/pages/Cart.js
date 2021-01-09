@@ -16,12 +16,14 @@ function Cart() {
     useEffect(() => {
         if (userCred.isLoggedIn){
             get_cart(getCart(userCred.userID)).then(() => {
-                let products = cart.products
-                products.join(',')
-                if(products.length > 0){
-                    get_cart(getCartProducts(products)).then(()=>{
-                        console.log("gotted");
-                    })
+                if(cart.products){
+                    let products = cart.products
+                    products.join(',')
+                    if(products.length > 0){
+                        get_cart(getCartProducts(products)).then(()=>{
+                            console.log("gotted");
+                        })
+                    }
                 }
             })
         }
