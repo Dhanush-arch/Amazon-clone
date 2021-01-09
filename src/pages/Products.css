@@ -1,0 +1,29 @@
+.product__home {
+    background-color: #EAEDED;
+    position: relative;
+    min-height: 100vh;
+    padding-top: 5em;
+
+}
+
+.category__home__row {
+    display: flex;
+    z-index: 1;
+    margin-left:5px;
+    margin-right: 5px;
+    padding-left: 10px;
+}
+
+.footer {
+    padding-top: 40px;
+}
+
+.category__home__row__text {
+    display: flex;
+    z-index: 1;
+    margin-left:5px;
+    margin-right: 5px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}

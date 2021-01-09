@@ -8,6 +8,8 @@ import Checkout from './pages/Checkout';
 import TotalOrders from './pages/TotalOrders';
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
+import Products from './pages/Products'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,6 +29,14 @@ function App() {
                     <Sidebar/>
                     <Home/>
                 </Route>
+                <Route path='/products/:category' exact  render={routerProps => (
+                    <>
+                    <Navbar/>
+                    <Sidebar/>
+                    <Products {...routerProps} />
+                    </>
+                ) }/>
+
                 <Route path='/cart' exact>
                     <Navbar/>
                     <Sidebar/>

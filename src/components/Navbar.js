@@ -44,6 +44,7 @@ function Navbar () {
     }
 
     const seachHandler = () => {
+        history.push('/')
         get_search_products(getSearchProducts(searchProb.word)).then(()=>{
             console.log("searched")
         })
