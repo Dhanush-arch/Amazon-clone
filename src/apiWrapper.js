@@ -221,3 +221,9 @@ export const setCOD = (cart_id) => {
         })
     }
 }
+
+export const getCategoryProducts = (search_word) => {
+    return axios.get(base_url + `/category-products/${search_word}/`).then((e) => {
+      return e.data;
+    });
+}
