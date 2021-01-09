@@ -31,8 +31,9 @@ function Cart() {
     },[])
 
     let product_cards = []
+    console.log(cart_products)
     cart_products.map(product => {
-        product_cards.push(<><CartProductCard title={product.productName} image={product.productImage} quantity={product.quantity} price={product.productPrice}/><hr/></>)
+        product_cards.push(<><CartProductCard displayBtn={true} productsId={product.productsId} productId={product.productid} title={product.productName} image={product.productImage} quantity={product.quantity} price={product.productPrice}/><hr/></>)
     })
 
     return (

@@ -41,7 +41,7 @@ function Checkout() {
 
     let product_cards = []
     cart_products.map(product => {
-        product_cards.push(<><CartProductCard title={product.productName} image={product.productImage} quantity={product.quantity} price={product.productPrice}/><hr/></>)
+        product_cards.push(<><CartProductCard displayBtn={false} title={product.productName} image={product.productImage} quantity={product.quantity} price={product.productPrice}/><hr/></>)
     })
 
 

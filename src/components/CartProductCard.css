@@ -12,6 +12,7 @@
 }
 
 .cart__productcard > img {
+  padding-left: 20px;
   height: 180px;
   object-fit: contain;
   flex: 1;
@@ -34,4 +35,38 @@
   padding: 10px;
   text-align: right;
   flex: 1;
+}
+
+.cart__productcard__content {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.increment{
+    padding-top: 10px;
+    display: flex;
+    flex-direction:row;
+}
+
+.increment__btn {
+    border: none;
+    background-color: #FEBD69;
+    cursor: pointer;
+}
+
+.increment__num {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.delete__btn{
+    color: red;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    padding: 0px;
+    margin: 0px;
 }
