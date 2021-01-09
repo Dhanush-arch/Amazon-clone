@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from 'react'
 import './App.css';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
@@ -9,7 +10,7 @@ import TotalOrders from './pages/TotalOrders';
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 import Products from './pages/Products'
-
+import LoadingScreen from 'react-loading-screen'
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,7 +19,20 @@ import {
 
 
 function App() {
+    const [loading, setloading] = useState(true);
+
+    useEffect(()=>{
+        setTimeout(()=>setloading(false), 3000);
+    }, [])
+
   return (
+      <LoadingScreen
+   loading={loading}
+   bgColor='#f1f1f1'
+   spinnerColor='#9ee5f8'
+   textColor='#676767'
+   logoSrc="https://seeklogo.com/images/A/amazon-logo-86547BFB54-seeklogo.com.png"
+ >
      <Router>
         <div className="App">
             <Switch>
@@ -60,6 +74,7 @@ function App() {
             </Switch>
         </div>
     </Router>
+    </LoadingScreen>
   );
 }
 

@@ -6,6 +6,7 @@ import getCart from '../actions/getCart';
 import getCartProducts from '../actions/getCartProducts';
 import { getPaymentDetail, checkPaymentStatus, setCOD } from "../apiWrapper";
 import {useHistory} from 'react-router-dom';
+import {RAZORPAY_KEY} from '../constants';
 
 function Checkout() {
     const [res, setRes] = useState("");
@@ -63,12 +64,12 @@ function Checkout() {
     const paymentHandler = async (e) => {
         e.preventDefault();
         let options = {
-        "key": "rzp_test_mp6FNCpzegnAZh", // Enter the Key ID generated from the Dashboard
+        "key": `${RAZORPAY_KEY}`, // Enter the Key ID generated from the Dashboard
         "amount": `${cart.price}`, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "Amazon",
         "description": "Test Transaction",
-        "image": "https://example.com/your_logo",
+        "image": "https://seeklogo.com/images/A/amazon-logo-86547BFB54-seeklogo.com.png",
         "order_id": `${res.id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": function (response){
             // alert(response.razorpay_payment_id);
@@ -95,7 +96,7 @@ function Checkout() {
             "address": "Razorpay Corporate Office"
         },
         "theme": {
-            "color": "#3399cc"
+            "color": "#FEBD69"
         }
     };
         const rzp1 = new window.Razorpay(options);
