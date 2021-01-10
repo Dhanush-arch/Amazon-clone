@@ -25,7 +25,7 @@ function Products({match}) {
     let word_list = word.replaceAll("-", " ").replaceAll("_", ", ")
     useEffect(() => {
         get_search_products(getCategoryProducts(match.params.category))
-    }, [])
+    }, [match.params.category])
 
     for(let i=0;i<product.length;i++) {
         productArr.push(<ProductCard id={product[i].productID} title={product[i].productName} desc={product[i].productDescription} price={product[i].productPrice} image={product[i].productImage}/>)
