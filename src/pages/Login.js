@@ -25,14 +25,22 @@ function Login() {
 
 
     return (
-        <div >
-          <div class="form-style-5">
+        <div className="login__main">
+          <div class="form-style-5__login">
+              <img src="https://seeklogo.com/images/A/amazon-logo-86547BFB54-seeklogo.com.png" alt=""/>
             <form onSubmit={handleSubmit}>
-            <legend>Login Page</legend>
-            <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Your E-mail *"/>
-            <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password *"/>
-            <input className="submit__btn" type="submit" value="Submit" />
+            <legend>Login</legend>
+            <label>Email</label>
+            <input required type="email" name="email" value={email} onChange={e => setEmail(e.target.value)}/>
+            <label>Password</label>
+            <input required type="password" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
+            <input className="submit__btn" type="submit" value="Continue" />
             </form>
+            <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+            <p className="or__text">or</p>
+            <button className="register__btn" onClick={()=> {
+                    history.push('/register')
+                }}>Create your Amazon Account</button>
           </div>
         </div>
     )
