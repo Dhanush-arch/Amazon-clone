@@ -1,11 +1,11 @@
 .form-style-5__login{
-	max-width: 300px;
-	margin: 20px auto;
-	padding: 20px;
-	border-radius: 8px;
+	max-width: 20rem;
+	margin: 1.4rem auto;
+	padding: 1.4rem;
+	border-radius: 0.7rem;
   	padding-top: 20px;
 	border: 1px #D4D4D4 solid;
-	padding-right: 40px;
+	padding-right: 2.5rem;
 }
 
 .form-style-5__login legend {
@@ -14,7 +14,7 @@
 }
 .form-style-5__login label {
 	display: block;
-	margin-bottom: 8px;
+	margin-bottom: 0.5rem;
 }
 .form-style-5__login input[type="text"],
 .form-style-5__login input[type="email"],
@@ -24,29 +24,29 @@
 	/* background: rgba(255,255,255,.1); */
 	border-color: grey;
 	border-width: thin;
-	border-radius: 4px;
+	border-radius: 0.3rem;
 	font-size: 13px;
-	padding: 10px;
+	padding: 0.6rem;
 	width: 100%;
 	/* background-color: #e8eeef;
 	color:#8a97a0; */
-	margin-bottom: 30px;
+	margin-bottom: 2rem;
 }
 
 .form-style-5__login input[type="submit"]
 {
 	display: block;
 	color: black;
-  border: 1px solid black;
-  padding: 2px 30px;
-  border-radius: 3px;
-  background-color: #FEBD69;
+	border: 1px solid black;
+	padding: 0.1rem 0.9rem;
+	background-color: #F2C965;
 	margin: 0 auto;
 	font-size: 15px;
 	text-align: center;
 	font-style: normal;
-	margin-bottom: 10px;
+	margin-bottom: 1rem;
 	cursor: pointer;
+	border-radius: 0.2rem;
 }
 
 
@@ -57,8 +57,8 @@
 }
 
 .form-style-5__login > p{
-	padding-top: 10px;
-	padding-bottom: 15px;
+	padding-top: 0.5rem;
+	padding-bottom: 0.8rem;
 	font-size: 13px;
 }
 
@@ -66,9 +66,9 @@
 	display: block;
 	margin: 0 auto;
 	object-fit: contain;
-	height:30px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	height:2rem;
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
 }
 
 .login__main > p {
@@ -81,4 +81,17 @@
 	display: block;
 	margin: 0 auto;
 	text-align: center;
+}
+
+.sample__btn {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 1.5rem;
+	background-color:  #F2C965;
+	border: thin solid black;
+	color: black;
+	padding: 0.3rem 0.6rem;
+	border-radius: 0.2rem;
+
 }

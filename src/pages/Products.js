@@ -44,9 +44,7 @@ function Products({match}) {
         <div className="product__home">
         <div className="category__home__row__text">{word_list}</div>
             {productArrFinal}
-            <div className="footer" id="footer">
-                <Footer/>
-            </div>
+            
         </div>
     )
 }

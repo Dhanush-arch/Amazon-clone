@@ -41,6 +41,10 @@ function Login() {
             <button className="register__btn" onClick={()=> {
                     history.push('/register')
                 }}>Create your Amazon Account</button>
+            <button className="sample__btn" onClick={() => {
+                    setEmail("sample@gmail.com");
+                    setPassword("dhanush123");
+                }}>Sample Login</button>
           </div>
         </div>
     )

@@ -3,7 +3,7 @@
   min-height: 100vh;
   /* padding: 40px; */
   align-items: center;
-  padding-top: 70px;
+  padding-top: 6rem;
   display: flex;
   flex-direction: column;
 }
@@ -11,16 +11,16 @@
 .totalorders__page > p {
   font-size: 20px;
   font-weight: 500;
-  padding-top: 5px;
-  padding-bottom: 10px;
+  padding-top: 0.4rem;
+  padding-bottom: 0.6rem;
 }
 
 .total__card {
     width: 75%;
     background-color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    border-radius: 0.6rem;
 }
 
 .total__productcard {
@@ -29,10 +29,10 @@
   flex-direction: row;
   /* align-items: center; */
   justify-content: center;
-  margin-top: 10px;
-  padding: 10px;
+  margin-top: 0.6rem;
+  padding: 0.6rem;
   width: 100%;
-  min-height: 100px;
+  min-height: 3rem;
   z-index: 1;
 }
 
@@ -41,13 +41,13 @@
 }
 
 .total__image > img {
-    max-width: 200px;
+    max-width: 12.4rem;
     /* max-height: 180px; */
     object-fit: contain;
 }
 
 .total__productcard__center {
-  padding: 10px;
+  padding: 0.6rem;
   flex: 1;
 }
 
@@ -60,7 +60,7 @@
 .total__productcard__right {
   font-size: 15px;
   font-weight: 400;
-  padding: 10px;
+  padding: 0.6rem;
   text-align: right;
   flex: 1;
 }
@@ -71,7 +71,7 @@
 }
 
 .total__card__id {
-    padding-left: 10px;
+    padding-left: 0.6rem;
     font-weight: 500px;
     display: flex;
     justify-content: space-between;
@@ -79,8 +79,8 @@
 
 .total__card > hr {
     color:white;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin-left: 0.6rem;
+    margin-bottom: 0.6rem;
 }
 
 .no__orders__card {
@@ -89,13 +89,130 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
-  padding: 10px;
+  margin-top: 0.6rem;
+  padding: 0.6rem;
   width: 100%;
-  min-height: 100px;
+  min-height: 4rem;
   z-index: 1;
 }
 
 .no__orders__card__title {
   font-size: 25px;
+}
+
+@media only screen and (max-width:767px) {
+    .totalorders__page {
+      background-color: #EAEDED;
+      min-height: 100vh;
+      /* padding: 40px; */
+      align-items: center;
+      padding-top: 6rem;
+      padding-right: 0rem;
+      padding-left: 0px;
+      margin-right: 0px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
+      margin: 0;
+      padding: 0;
+      padding-top: 6rem;
+    }
+
+    .total__card {
+        width: 90%;
+        background-color: white;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 1.2rem;
+        border-radius: 0.6rem;
+    }
+
+    .total__productcard {
+      background-color: white;
+      display: flex;
+      flex-direction: row;
+      /* align-items: center; */
+      justify-content: center;
+      margin-top: 0.3rem;
+      padding: 0rem;
+      width: 100%;
+      min-height: 2rem;
+      z-index: 1;
+    }
+
+    .total__image {
+      flex: 1;
+      padding-left: 0.3rem;
+    }
+
+    .total__image > img {
+        max-width: 7rem;
+        /* max-height: 180px; */
+        object-fit: contain;
+    }
+
+    .total__productcard__center {
+      padding:0rem;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
+      flex: 2;
+    }
+
+    .total__productcard__title {
+      color: #007185;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .total__productcard__right {
+      font-size: 14px;
+      font-weight: 400;
+      padding: 0.6rem;
+      padding-left: 0.1rem;
+      padding-right: 0.5rem;
+      text-align: right;
+      flex: 1;
+    }
+
+    .total__card__content{
+        text-align: right;
+        font-weight: 400;
+        padding-right: 0.5rem;
+        font-size: 14px;
+    }
+
+    .total__card__id {
+        padding-left: 0.8rem;
+        font-weight: 500px;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0.3rem;
+    }
+
+    .total__card > hr {
+        color:white;
+        margin-left: 0.6rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .no__orders__card {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.6rem;
+      padding: 0.6rem;
+      width: 100%;
+      min-height: 4rem;
+      z-index: 1;
+    }
+
+    .no__orders__card__title {
+      font-size: 25px;
+    }
 }

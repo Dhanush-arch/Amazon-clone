@@ -21,6 +21,10 @@ function Navbar () {
     const searchProb = useSelector(state => state.search)
     const history = useHistory();
 
+    const mqltab = window.matchMedia('(max-width: 992px)').matches;
+    const mqlmobile = window.matchMedia('(max-width: 767px)').matches;
+    console.log(mqltab)
+
     useEffect(() => {
         if(userCred.isLoggedIn)
             getCartDetail(getCart(userCred.userID))
@@ -54,7 +58,14 @@ function Navbar () {
     return (
         <div className="navbar">
             <a className="openbtn" onClick={()=>{
-                document.getElementById("mySidepanel").style.width = "380px";
+                    if(mqlmobile) {
+                        document.getElementById("mySidepanel").style.width = "14rem";
+                    }
+                    else if(mqltab){
+                        document.getElementById("mySidepanel").style.width = "18rem";
+                    }else {
+                        document.getElementById("mySidepanel").style.width = "25rem";
+                    }
               }}>
               <FaBars  />
             </a>
@@ -74,23 +85,24 @@ function Navbar () {
             </div>
             <div className="navbar__right">
                <div className="navbar__right__in">
-                   <div className="navbar__signin">
+                   <div className="navbar__signin mobile-hidden">
                         <p>Hello {userCred.isLoggedIn ? '' : <>Guest</>}</p>
-                        {userCred.isLoggedIn ? <a>{userCred.userEmail}</a> : <Link className="navbar__login" to='/login'>Sign In</Link>}
+                        {userCred.isLoggedIn ? <a>{mqltab ? <p>{userCred.userEmail.slice(0, 6)}...</p> : userCred.userEmail}</a> : <Link className="navbar__login" to='/login'>Sign In</Link>}
                     </div>
                     {userCred.isLoggedIn ?
-                        <div className="dropdown">
+                        <div className="dropdown mobile-hidden">
                             <p className="navbar__login" id="dropbtn" onClick={myFunction}>My Account</p>
                             <div id="myDropdown" className="dropdown-content">
                                 <Link className="dropdown__link" to='/total-orders'>Orders</Link>
                                 <Link className="dropdown__link" onClick={() => {
                                         LOGOUT(logout()).then(()=>{
                                             EraseCart(eraseCart())
+                                            history.push("/")
                                         })
                                     }}>Logout</Link>
                              </div>
                         </div>
-                    : <Link className="navbar__login" to='/register'>Sign Up</Link> }
+                    : <Link className="navbar__login mobile-hidden" to='/register'>Sign Up</Link> }
                     <div className="navbar__cart">
                         <span className="cart__items">{cart.products ? cart.products.length : 0}</span>
                         {userCred.isLoggedIn ? <Link style={{cursor:"pointer"}} to='/cart'><CgShoppingCart className="cart__icon"/></Link> : <CgShoppingCart style={{cursor:"pointer"}} onClick={()=>{

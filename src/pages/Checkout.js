@@ -123,16 +123,36 @@ function Checkout() {
                 <p className="checkout__address__content">Ph.No:{delivery.num}</p>
               </div>
               <div className="checkout__products">
-                <p className="checkout__address__title" >Products:</p>
+                <p className="checkout__address__title" id="target__title" >Products:</p>
                 <hr/>
                   {product_cards}
               </div>
+              <div className="inner__row__hidden" id="hidden__checkout">
+                  <div className="inner__inner__hidden">
+                      <div>
+                          <p className="inner__sub">Subprice: Rs.{cart.price}</p>
+                          <p>Payment Method:</p>
+                          <input onClick={() => {
+                                  setIsOnline(false);
+                                  setIsSelected(true);
+                              }} className="input__radio" type="radio" id="cod" name="payment" value="1"/>
+                          <label for="cod">Cash on Delivery</label><br/>
+                          <input onClick={() => {
+                                  setIsOnline(true);
+                                  setIsSelected(true);
+                              }} className="input__radio" type="radio" id="online" name="payment" value="2"/>
+                          <label for="online">Online</label><br/>
+                          {isOnline ? (isSelected ?  <button className="input__submit" onClick={paymentHandler}>CheckOut</button> : <button className="input__submit" disabled>CheckOut</button>)
+                                  : (isSelected ? <input className="input__submit" type="submit" onClick={codHandler} value="CheckOut"/> : <input className="input__submit" disabled type="submit" value="CheckOut"/>)}
+                      </div>
+                      </div>
+                </div>
             </div>
           </div>
           <div className="checkout__right">
             <div className="inner__row">
               <p>Subprice: Rs.{cart.price}</p>
-              <p>Payment Method:</p>
+              <p id="payment__type">Payment Method:</p>
               <input onClick={() => {
                       setIsOnline(false);
                       setIsSelected(true);

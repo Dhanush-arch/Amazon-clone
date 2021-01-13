@@ -20,7 +20,15 @@ function Home() {
     const history = useHistory();
     let productArr = [];
     let productArrFinal = [];
-
+    const mqltab = window.matchMedia('(max-width: 992px)').matches;
+    const mqlmobile = window.matchMedia('(max-width: 767px)').matches;
+    let num = 4;
+    if(mqlmobile){
+        num = 2;
+    }
+    else if(mqltab){
+        num = 3;
+    }
     useEffect(() => {
         getProduct(getProducts())
     },[])
@@ -35,9 +43,9 @@ function Home() {
         productArr.push(<ProductCard id={product[i].productID} title={product[i].productName} desc={product[i].productDescription} price={product[i].productPrice} image={product[i].productImage}/>)
     }
 
-    for(let i=0;i<productArr.length;i=i+4) {
+    for(let i=0;i<productArr.length;i=i+num) {
         let temp = [];
-        for(let j=i;j<i+4;j++){
+        for(let j=i;j<i+num;j++){
             temp.push(productArr[j])
         }
         productArrFinal.push(<div className="home__row">{temp}</div>)
@@ -54,7 +62,7 @@ function Home() {
         try{
             document.getElementById("footer").classList.add("no__product__footer")
         } catch(e) {
-            
+
         }
 
     }
@@ -74,14 +82,17 @@ function Home() {
             {search.onSearch ? '' : <>
                 <div className="home__row">
                     <AddCard title={"Upgrade your home"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/B00OT9CS5S_186x116._SY116_CB417134289_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/B08345R1ZW_186x116._SY116_CB417134289_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/WFH_186x116._SY116_CB417134289_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/B01N5KIHWN_186x116._SY116_CB417134288_.jpg"]}/>
-                    <AddCard title={"Everyday essentials"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_4._SY116_CB431329535_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_1._SY116_CB431329533_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_2._SY116_CB431329535_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_3._SY116_CB431329535_.jpg"]}/>
-                    <AddCard title={"Amazon Brands & more"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/QC/Home/bedsheet_B06Y5GF9SF_Asins_186x116._SY116_CB409842842_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/QC/Home/Mixer_B07RYL7NSH_Asins_186x116._SY116_CB409842842_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GWTransition/2-4_186x116._SY116_CB433910795_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/Symbol/2020/GatewayNK/PC/spb_186x116._SY116_CB433889053_.jpg"]}/>
+<AddCard title={"Everyday essentials"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_4._SY116_CB431329535_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_1._SY116_CB431329533_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_2._SY116_CB431329535_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img18/HPC/GW/Desktop-Qc-1x_3._SY116_CB431329535_.jpg"]}/>
+                {mqlmobile ? "" : <>
+                    <AddCard title={"Amazon Brands & more"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/QC/Home/bedsheet_B06Y5GF9SF_Asins_186x116._SY116_CB409842842_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/QC/Home/Mixer_B07RYL7NSH_Asins_186x116._SY116_CB409842842_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GWTransition/2-4_186x116._SY116_CB433910795_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/Symbol/2020/GatewayNK/PC/spb_186x116._SY116_CB433889053_.jpg"]}/></>}
                 </div>
                 <div className="home__row">
-                    <AddCard title={"20%-70% off | Daily essentials"} image={['https://images-eu.ssl-images-amazon.com/images/G/31/img20/Grocery/GW/1x_2._SY116_CB433219942_.jpg', 'https://images-eu.ssl-images-amazon.com/images/G/31/img20/Grocery/GW/1x_3._SY116_CB433219942_.jpg', 'https://images-eu.ssl-images-amazon.com/images/G/31/img20/Grocery/GW/1x_1._SY116_CB433219942_.jpg', 'https://images-eu.ssl-images-amazon.com/images/G/31/img20/Grocery/GW/1x_4._SY116_CB433219942_.jpg']} />
-                    <AddCard title={"Home essentials | Amazon Brands & more"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/2-1_186x116._SY116_CB430773131_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/2-4_186x116._SY116_CB430773130_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/2-2_186x116._SY116_CB430773130_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/2-3_186x116._SY116_CB430773130_.jpg"]} />
-                    <AddCard title={"Amazon Brands & more"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/QC/Home/bedsheet_B06Y5GF9SF_Asins_186x116._SY116_CB409842842_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/QC/Home/Mixer_B07RYL7NSH_Asins_186x116._SY116_CB409842842_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GWTransition/2-4_186x116._SY116_CB433910795_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/Symbol/2020/GatewayNK/PC/spb_186x116._SY116_CB433889053_.jpg"]}/>
-                    <AddCard title={"Automotive essentials | Up to 60% off"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Vega_helmet_372x232._SY116_CB405083904_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Tyre_372x232._SY116_CB405083904_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Pressurewasher_372x232._SY116_CB405083904_.jpg","https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Protective_gear_372x232._SY116_CB405083904_.jpg"]} />
+                    {mqlmobile ? "" : <>
+                        <AddCard title={"20%-70% off | Daily essentials"} image={['https://images-eu.ssl-images-amazon.com/images/G/31/img20/Grocery/GW/1x_2._SY116_CB433219942_.jpg', 'https://images-eu.ssl-images-amazon.com/images/G/31/img20/Grocery/GW/1x_3._SY116_CB433219942_.jpg', 'https://images-eu.ssl-images-amazon.com/images/G/31/img20/Grocery/GW/1x_1._SY116_CB433219942_.jpg', 'https://images-eu.ssl-images-amazon.com/images/G/31/img20/Grocery/GW/1x_4._SY116_CB433219942_.jpg']} />
+
+                        <AddCard title={"Home essentials | Amazon Brands & more"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/2-1_186x116._SY116_CB430773131_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/2-4_186x116._SY116_CB430773130_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/2-2_186x116._SY116_CB430773130_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/2-3_186x116._SY116_CB430773130_.jpg"]} />
+                    <AddCard title={"Amazon Brands & more"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/QC/Home/bedsheet_B06Y5GF9SF_Asins_186x116._SY116_CB409842842_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GW/QC/Home/Mixer_B07RYL7NSH_Asins_186x116._SY116_CB409842842_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img20/AmazonBrands/GWTransition/2-4_186x116._SY116_CB433910795_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/Symbol/2020/GatewayNK/PC/spb_186x116._SY116_CB433889053_.jpg"]}/></>}
+                    {mqltab ? '' : <AddCard title={"Automotive essentials | Up to 60% off"} image={["https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Vega_helmet_372x232._SY116_CB405083904_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Tyre_372x232._SY116_CB405083904_.jpg", "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Pressurewasher_372x232._SY116_CB405083904_.jpg","https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Protective_gear_372x232._SY116_CB405083904_.jpg"]} />}
                 </div>
                 </>}
             {productArrFinal}

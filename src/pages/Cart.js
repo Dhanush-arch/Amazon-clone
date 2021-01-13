@@ -6,13 +6,14 @@ import SubtotalCard from '../components/SubtotalCard'
 import {useSelector, useDispatch} from 'react-redux'
 import getCart from '../actions/getCart';
 import getCartProducts from '../actions/getCartProducts';
+import {useHistory} from 'react-router-dom';
 
 function Cart() {
     const get_cart = useDispatch();
     const userCred = useSelector(state => state.user)
     const cart = useSelector(state => state.cart)
     const cart_products = useSelector(state => state.cart_products.products)
-
+    const history = useHistory();
     useEffect(() => {
         if (userCred.isLoggedIn){
             get_cart(getCart(userCred.userID)).then(() => {
@@ -52,6 +53,12 @@ function Cart() {
                   <div className="cart__totalPrice">
                     <p className="cart__subTotal">Subtotal ({cart.products.length} items): </p><p className="cart__subPrice"> Rs.{cart.price}</p>
                   </div>
+                  <div className="cart__totalPrice" id="hidden__row">
+                      <button className="subtotal__btn" id="hidden" onClick={() => {
+                              history.push('/delivery')
+                          }}>Proceed to Buy</button>
+                  </div>
+
             </> : <EmptyCard/>}
 
 

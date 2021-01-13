@@ -68,21 +68,41 @@ function CartProductCard({title, image, quantity, price, productId, productsId, 
         })
     }
 
+
+    // <div className="cart__productcard">
+    // <img src={`${websiteBaseUrl}${image}`} alt="image" />
+    // <div className="cart__productcard__content">
+    //     <p className="cart__productcard__title">{title}</p>
+    //     {displayBtn ? (<>
+    //     <div className="increment">
+    //         <button className="increment__btn" onClick={incrementHandler} ><BiPlus/></button><p className="increment__num">{quantity}</p><button className="increment__btn" onClick={decrementHandler}><BiMinus/></button>
+    //     </div>
+    //     <a className="delete__btn" onClick={deleteHandler}><MdDelete/></a>
+    //     </>
+    // ) : ""}
+    //
+    // </div>
+    // <div className="cart__productcard__center">
+    // </div>
+    // <div className="cart__productcard__right">
+    // <p>{quantity} x {price} = {quantity * parseFloat(price)}</p>
+    // </div>
+    // </div>
+
     return (
         <div className="cart__productcard">
-        <img src={`${websiteBaseUrl}${image}`} alt="image" />
-        <div className="cart__productcard__content">
-            <p className="cart__productcard__title">{title}</p>
-            {displayBtn ? (<>
-            <div className="increment">
-                <button className="increment__btn" onClick={incrementHandler} ><BiPlus/></button><p className="increment__num">{quantity}</p><button className="increment__btn" onClick={decrementHandler}><BiMinus/></button>
-            </div>
-            <a className="delete__btn" onClick={deleteHandler}><MdDelete/></a>
-            </>
-        ) : ""}
-
-        </div>
+        <div className="cart__image"><img src={`${websiteBaseUrl}${image}`} alt="image" /></div>
         <div className="cart__productcard__center">
+        <p className="cart__productcard__title">{title}</p>
+            {displayBtn ? (<>
+                <div className="increment">
+                    <button className="increment__btn" onClick={incrementHandler} ><BiPlus/></button><p className="increment__num">{quantity}</p><button className="increment__btn" onClick={decrementHandler}><BiMinus/></button>
+                </div>
+                <a className="delete__btn" onClick={deleteHandler}><MdDelete/></a>
+                </>
+            ) : ""}
+            <p className="cart__hidden">Qty: {quantity}</p>
+            <p className="cart__hidden">price: Rs.{price}</p>
         </div>
         <div className="cart__productcard__right">
         <p>{quantity} x {price} = {quantity * parseFloat(price)}</p>
